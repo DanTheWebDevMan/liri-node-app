@@ -1,22 +1,23 @@
 require("dotenv").config();
 
-//imports the `keys.js` file and store it in a variable.
 var keys = require("./keys.js");
-//access keys information 
-var Spotify = require("node-spotify-api");
-var spotify = new Spotify(keys.spotify);
-var axios = require("axios"); 
-var fs = require("fs"); 
+
+var Spotify = require("node-spotify-api"); 
+var song = new Spotify(keys.spotify);
+var axios = require("axios");
+
+var fs = require("fs");
+
 var moment = require("moment"); 
-    moment().format();
+moment().format();
 
 
-// switch statement for commands linked to second and third items in input array
+// switch statement for general commands linked to second and third items in input array
+
 var command = process.argv[2]; 
-var value = process.argv[3]; 
+var value = process.argv.slice(3).join(" "); 
 
-//switch function allowing user to put one command and value
-function userInput (command, value){
+function userInput(command,value) {
     switch (command) {
         case "concert-this":
             concertThis(value);
@@ -33,38 +34,36 @@ function userInput (command, value){
         }
     }
 
-userInput(command, value);
+userInput(command,value);
 // Functions for commands
 // where value is an artist or band - node liri.js concert-this <artist/band name here>
 function concertThis(value) {
-  axios.get("https://rest.bandsintown.com/artists/" + value + "/events?app_id=codingbootcamp")
-  
-  .then(function(response) {    
-      for (var i = 0; i < 3; i++) {
-          var eventResults = 
-              "--------------------------------------------------------------------" +
-                  "\nVenue Name: " + response.data[i].venue.name + 
-                  "\nVenue Location: " + response.data[i].venue.city +
-                  "\nDate of the Event: " + moment(response.data[i].datetime).format("MM/DD/YYYY") + "\n" +
-              "--------------------------------------------------------------------"; 
-      console.log(eventResults);
-     }
-  }).catch(function () {
-      console.log("Doesn't look like they are touring, pick another band/artist!");
-  });
-}
+    axios.get("https://rest.bandsintown.com/artists/" + value + "/events?app_id=codingbootcamp")
+    .then(function(response) {    
+        for (var i = 0; i < 3; i++) {
+            var eventResults = 
+                "\n--------------------------------------------------------------------" +
+                    "\nVenue Name: " + response.data[i].venue.name + 
+                    "\nVenue Location: " + response.data[i].venue.city +
+                    "\nDate of the Event: " + moment(response.data[i].datetime).format("MM/DD/YYYY") + "\n" +
+                "\n--------------------------------------------------------------------"; 
+        console.log(eventResults);
+        }
+    }).catch(function () {
+        console.log("Selection currently not touring, please try another band/artist");
+    });
+    };
+
 // value is title of song- node liri.js spotify-this-song '<song name here>'
 function spotifyThis(value) {
-      if(!value){
-      value = "Ace of Base";
+    if(!value){
+    value = "Ace of Base";
     }
-  spotify.search({ 
-      type: "track", 
-      query: value 
-  }).then(function(response) {
-    
+    song.search({ 
+        type: "track", 
+        query: value 
+    }).then(function(response) {
       for (var i = 0; i < 1; i++) {
-          
           var spotifyResults = 
               "-----------------------------------------------------------------------------------------------------------------------" +
                   "\nArtist(s): " + response.tracks.items[i].artists[0].name + 
@@ -74,13 +73,13 @@ function spotifyThis(value) {
               "------------------------------------------------------------------------------------------------------------------------";
                   
           console.log(spotifyResults);
-          
       }
   }).catch(function() {
       console.log("Hmmm never heard of that song, pick another");
   });
 }
-// value is movie name- node liri.js movie-this '<movie name here>'
+
+//value is movie name- node liri.js movie-this '<movie name here>'
 function movieThis(value) {
   if(!value){
       value = "Mr. Nobody";
@@ -109,5 +108,16 @@ function movieThis(value) {
       "\n--------------------------------------------------------------------");
   }); 
 }
-
-
+// last function to read from text file- node liri.js do-what-it-says
+function doThis() {
+    fs.readFile("random.txt", "utf8", function(error, value){
+        if (error){ 
+        return console.log( "The document appears to be blank, please write something in the document");
+        }
+        var datArr= data.split(",");
+        
+        command=datArr[0];
+        value=datArr[1];
+        userInput(command,value);
+    });
+};
