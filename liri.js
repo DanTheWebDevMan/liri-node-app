@@ -53,6 +53,7 @@ function concertThis(value) {
         console.log("Selection currently not touring, please try another band/artist");
     });
     };
+    
 
 // value is title of song- node liri.js spotify-this-song '<song name here>'
 function spotifyThis(value) {
@@ -119,12 +120,14 @@ function doThis () {
         console.log("data is: " + data);
 
         var output = data.split(",");
-        console.log ("Output is: " + output);
 
         command = output[0];
         value = output[1];
             console.log("Command is: " + command);
             console.log("Value is: " + value);
 
+        userInput(command, value);
     });
 }
+
+// userInput(command, value);
