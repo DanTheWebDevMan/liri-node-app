@@ -75,12 +75,13 @@ function spotifyThis(value) {
           console.log(spotifyResults);
       }
   }).catch(function() {
-      console.log("Hmmm never heard of that song, pick another");
+      console.log("Song not valid; try another");
   });
 }
 
 //value is movie name- node liri.js movie-this '<movie name here>'
 function movieThis(value) {
+//default value if there is no input
   if(!value){
       value = "Mr. Nobody";
   }
@@ -104,20 +105,26 @@ function movieThis(value) {
     }).catch(function() {
       console.log(
     "\n--------------------------------------------------------------------" + 
-      "\nWe cannot seem to locate that film, please choose another" +
+      "\nCan't seem to find that film, please select another" +
       "\n--------------------------------------------------------------------");
   }); 
 }
 // last function to read from text file- node liri.js do-what-it-says
-function doThis() {
-    fs.readFile("random.txt", "utf8", function(error, value){
-        if (error){ 
-        return console.log( "The document appears to be blank, please write something in the document");
+function doThis () {
+    fs.readFile("random.txt", "utf-8", function(error,data) {
+
+        if (error) {
+            return console.log(error);
         }
-        var datArr= data.split(",");
-        
-        command=datArr[0];
-        value=datArr[1];
-        userInput(command,value);
+        console.log("data is: " + data);
+
+        var output = data.split(",");
+        console.log ("Output is: " + output);
+
+        command = output[0];
+        value = output[1];
+            console.log("Command is: " + command);
+            console.log("Value is: " + value);
+
     });
-};
+}
