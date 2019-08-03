@@ -3,8 +3,10 @@ In this assignment, I made LIRI. LIRI is like iPhone's SIRI. However, while SIRI
 
 
 1. Clearly state the problem the app is trying to solve (i.e. what is it doing and why)
+The app basically connects to 4 different systems(servers) using APIs and the user can input one of four commands to get a different response from the systems.
 
 2. Give a high-level overview of how the app is organized
+
 
 3. Give start-to-finish instructions on how to run the app
 
