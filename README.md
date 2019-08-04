@@ -2,17 +2,19 @@
 
 The LIRI application was made for this assignment, which is similiar to iPhone's SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface, LIRI is a _Language_ Interpretation and Recognition Interface. LIRI will be a command line node app that takes in parameters and gives data in return.
 
+Link to deployed version:https://dannielzelaya.github.io/liri-node-app/.
+
 ## *What does the app do?*
 
 1. The app  connects to 4 different systems(servers) using APIs and the user can input one of four commands to get a different response from the systems. The four commands are: 
   1. concert-this
-    1. Connects to Bands In Town Artist Events API
+    * Connects to Bands In Town Artist Events API
   2. spotify-this-song
-    1. Connects to Spotify API 
+    * Connects to Spotify API 
   3. movie-this
-    1. Connects to Axios package which retrieves data from the OMDB API
+    * Connects to Axios package which retrieves data from the OMDB API
   4. do-what-it-says
-    1. Runs the command and value inside the random.txt file
+    * Runs the command and value inside the random.txt file
 
 ## *What does the user need to do?*
 
@@ -64,10 +66,35 @@ The LIRI application was made for this assignment, which is similiar to iPhone's
  
 
 ## *How does it look?*
+Note: Please look at images folder inside repo for examples. Red arrows display user command and input inside terminal
+
+**'concert-this' command**
+
+![concert-this](https://github.com/dannielzelaya/liri-node-app/blob/master/concert-this.jpg?raw=true)
+
+
+**'movie-this' command** 
+
+![Movie-This](https://github.com/dannielzelaya/liri-node-app/blob/master/movie-this.jpg?raw=true)
+
+**'movie-this' command with no input'**
+
+![movie-this-noInput](https://github.com/dannielzelaya/liri-node-app/blob/master/movie-this-no-input.jpg?raw=true)
+
+
+**'spotify-this-song' command**
+
+![spotify-this](https://github.com/dannielzelaya/liri-node-app/blob/master/spotify-this-song.jpg?raw=true)
+
+**Inside the random.txt file**
+
+![random.txt](https://github.com/dannielzelaya/liri-node-app/blob/master/random-txt-file.jpg?raw=true)
+
+**'Do-what-it-says' command**
+
+![do-what-it-says](https://github.com/dannielzelaya/liri-node-app/blob/master/Do-what-it-says.jpg?raw=true)
 
 
 
-
-5. Contain a link to a deployed version of the app
 
 
