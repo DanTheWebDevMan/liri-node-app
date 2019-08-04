@@ -49,7 +49,7 @@ function concertThis(value) {
                 "\n--------------------------------------------------------------------"; 
         console.log(eventResults);
         }
-    }).catch(function () {
+    }).catch(function() {
         console.log("Selection currently not touring, please try another band/artist");
     });
     };
@@ -129,5 +129,3 @@ function doThis () {
         userInput(command, value);
     });
 }
-
-// userInput(command, value);
