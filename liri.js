@@ -70,7 +70,7 @@ function spotifyThis(value) {
                   "\nArtist(s): " + response.tracks.items[i].artists[0].name + 
                   "\nSong Name: " + response.tracks.items[i].name +
                   "\nAlbum Name: " + response.tracks.items[i].album.name +
-                  "\nPreview Link: " + response.tracks.items[i].album.external_urls.spotify + "\n" +
+                  "\nPreview Link: " + response.tracks.items[i].external_urls.spotify + "\n" +
               "------------------------------------------------------------------------------------------------------------------------";
                   
           console.log(spotifyResults);
